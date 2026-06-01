@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHotelAppFinal.Views.ContratacaoHospedagem"
+             Title="ContratacaoHospedagem"
+             BackgroundColor="#1A1A1A"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Dourado">#C89B6A</Color>
+            <Color x:Key="FundoCard">#262626</Color>
+            <Color x:Key="FundoSecao">#2F2F2F</Color>
+            <Color x:Key="FundoInput">#3A3A3A</Color>
+            <Color x:Key="Borda">#484848</Color>
+            <Color x:Key="TextoMutado">#888888</Color>
+            <Color x:Key="TextoPrincipal">#CCCCCC</Color>
+
+            <Style TargetType="Label" x:Key="LabelSecao">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="TextColor" Value="#888888" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CharacterSpacing" Value="1.2" />
+                <Setter Property="TextTransform" Value="Uppercase" />
+                <Setter Property="Margin" Value="0,0,0,8" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelCampo">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="#CCCCCC" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelValor">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#C89B6A" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="MinimumWidthRequest" Value="24" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style TargetType="Border" x:Key="CardSecao">
+                <Setter Property="BackgroundColor" Value="#2F2F2F" />
+                <Setter Property="Padding" Value="16" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+                <Setter Property="Stroke" Value="#383838" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label Text="Cálculo da Diária"
+                   FontFamily="Kalam"
+                   FontSize="30"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#C89B6A"
+                   Margin="0,12,0,4" />
+
+            <Border BackgroundColor="#262626"
+                    Padding="16"
+                    StrokeShape="RoundRectangle 14"
+                    Stroke="#333333">
+                <VerticalStackLayout Spacing="12">
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout>
+                            <Label Text="Hóspedes" Style="{StaticResource LabelSecao}" />
+
+                            <Grid ColumnDefinitions="*, Auto"
+                                  RowDefinitions="Auto"
+                                  Margin="0,0,0,10">
+                                <Label Grid.Column="0"
+                                       Text="Adultos"
+                                       Style="{StaticResource LabelCampo}" />
+                                <HorizontalStackLayout Grid.Column="1"
+                                                       Spacing="12"
+                                                       VerticalOptions="Center">
+                                    <Stepper x:Name="stp_adultos"
+                                             Minimum="0"
+                                             Maximum="10"
+                                             Increment="1" />
+                                    <Label Text="{Binding Value, Source={x:Reference stp_adultos}}"
+                                           Style="{StaticResource LabelValor}" />
+                                </HorizontalStackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="0.5"
+                                     Color="#3A3A3A"
+                                     Margin="0,0,0,10" />
+
+                            <Grid ColumnDefinitions="*, Auto"
+                                  RowDefinitions="Auto">
+                                <Label Grid.Column="0"
+                                       Text="Crianças"
+                                       Style="{StaticResource LabelCampo}" />
+                                <HorizontalStackLayout Grid.Column="1"
+                                                       Spacing="12"
+                                                       VerticalOptions="Center">
+                                    <Stepper x:Name="stp_criancas"
+                                             Minimum="0"
+                                             Maximum="10"
+                                             Increment="1" />
+                                    <Label Text="{Binding Value, Source={x:Reference stp_criancas}}"
+                                           Style="{StaticResource LabelValor}" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Escolha sua suíte" Style="{StaticResource LabelSecao}" />
+                            <Border BackgroundColor="#3A3A3A"
+                                    Padding="12,10"
+                                    Stroke="#484848"
+                                    StrokeShape="RoundRectangle 8">
+                                <Picker x:Name="pck_quarto"
+                                        ItemDisplayBinding="{Binding Descricao}"
+                                        Title="Selecione sua acomodação"
+                                        TitleColor="#888888"
+                                        TextColor="#C89B6A"
+                                        BackgroundColor="Transparent" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Período da estadia" Style="{StaticResource LabelSecao}" />
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#3A3A3A"
+                                        Padding="12,10"
+                                        Stroke="#484848"
+                                        StrokeShape="RoundRectangle 8">
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="Check-in"
+                                               FontSize="11"
+                                               TextColor="#888888" />
+                                        <DatePicker x:Name="dtpck_checkin"
+                                                    DateSelected="dtpck_checkin_DateSelected"
+                                                    Format="dd/MM/yyyy"
+                                                    TextColor="#C89B6A"
+                                                    BackgroundColor="Transparent"
+                                                    FontSize="14"
+                                                    FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <Border Grid.Column="1"
+                                        BackgroundColor="#3A3A3A"
+                                        Padding="12,10"
+                                        Stroke="#484848"
+                                        StrokeShape="RoundRectangle 8">
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="Check-out"
+                                               FontSize="11"
+                                               TextColor="#888888" />
+                                        <DatePicker x:Name="dtpck_checkout"
+                                                    Format="dd/MM/yyyy"
+                                                    TextColor="#C89B6A"
+                                                    BackgroundColor="Transparent"
+                                                    FontSize="14"
+                                                    FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Button Text="Avançar"
+                            Clicked="Button_Clicked"
+                            BackgroundColor="#C89B6A"
+                            TextColor="#1A1A1A"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            CornerRadius="10"
+                            HeightRequest="50"
+                            Margin="0,4,0,0" />
+
+                    <Button Text="Sobre o App"
+                            Clicked="Button_Clicked_1"
+                          
+                            BackgroundColor="Transparent"
+                            TextColor="#888888"
+                            BorderColor="#3A3A3A"
+                            BorderWidth="1"
+                            CornerRadius="10"
+                            HeightRequest="44"
+                            FontSize="12"
+                            CharacterSpacing="1"
+                            TextTransform="Uppercase" />
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

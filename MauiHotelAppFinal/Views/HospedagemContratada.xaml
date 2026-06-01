@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHotelAppFinal.Views.HospedagemContratada"
+             Title="HospedagemContratada"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#1A1A1A">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Dourado">#C89B6A</Color>
+            <Color x:Key="FundoCard">#262626</Color>
+            <Color x:Key="FundoSecao">#2F2F2F</Color>
+            <Color x:Key="FundoInput">#3A3A3A</Color>
+            <Color x:Key="TextoMutado">#666666</Color>
+
+            <Style TargetType="Label" x:Key="LabelRotulo">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CharacterSpacing" Value="1.2" />
+                <Setter Property="TextTransform" Value="Uppercase" />
+                <Setter Property="Margin" Value="0,0,0,10" />
+            </Style>
+
+            <Style TargetType="Border" x:Key="CardSecao">
+                <Setter Property="BackgroundColor" Value="#2F2F2F" />
+                <Setter Property="Stroke" Value="Transparent" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+                <Setter Property="Padding" Value="14,14" />
+            </Style>
+
+            <Style TargetType="Border" x:Key="MiniCard">
+                <Setter Property="BackgroundColor" Value="#3A3A3A" />
+                <Setter Property="Stroke" Value="Transparent" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+                <Setter Property="Padding" Value="12,10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Border BackgroundColor="#2A2A2A"
+                    Stroke="#3A3A3A"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="14,6"
+                    HorizontalOptions="Center"
+                    Margin="0,12,0,0">
+                <HorizontalStackLayout Spacing="6">
+                    <Label Text="✓"
+                           TextColor="#C89B6A"
+                           FontSize="13"
+                           VerticalOptions="Center" />
+                    <Label Text="Reserva confirmada"
+                           TextColor="#888888"
+                           FontSize="11"
+                           CharacterSpacing="1"
+                           TextTransform="Uppercase"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <VerticalStackLayout Spacing="4" Margin="0,0,0,4">
+                <Label Text="{Binding QuartoSelecionado.Descricao}"
+                       TextColor="#C89B6A"
+                       FontFamily="Kalam"
+                       FontSize="30"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="Acomodação selecionada"
+                       TextColor="#555555"
+                       FontSize="12"
+                       CharacterSpacing="0.5"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <Border BackgroundColor="#262626"
+                    Stroke="#333333"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="16">
+                <VerticalStackLayout Spacing="12">
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout>
+                            <Label Text="Hóspedes" Style="{StaticResource LabelRotulo}" />
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+
+                                <Border Grid.Column="0" Style="{StaticResource MiniCard}">
+                                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="Adultos"
+                                               TextColor="#666666"
+                                               FontSize="11"
+                                               HorizontalTextAlignment="Center" />
+                                        <Label Text="{Binding QntAdultos}"
+                                               TextColor="#C89B6A"
+                                               FontSize="26"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <Border Grid.Column="1" Style="{StaticResource MiniCard}">
+                                    <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                                        <Label Text="Crianças"
+                                               TextColor="#666666"
+                                               FontSize="11"
+                                               HorizontalTextAlignment="Center" />
+                                        <Label Text="{Binding QntCriancas}"
+                                               TextColor="#C89B6A"
+                                               FontSize="26"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Período da estadia" Style="{StaticResource LabelRotulo}" />
+
+                            <Grid ColumnDefinitions="*, Auto, *" ColumnSpacing="8">
+
+                                <Border Grid.Column="0" Style="{StaticResource MiniCard}">
+                                    <VerticalStackLayout Spacing="3">
+                                        <Label Text="Check-in"
+                                               TextColor="#666666"
+                                               FontSize="11" />
+                                        <Label Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                               TextColor="#C89B6A"
+                                               FontSize="14"
+                                               FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <Label Grid.Column="1"
+                                       Text="→"
+                                       TextColor="#555555"
+                                       FontSize="16"
+                                       VerticalOptions="Center" />
+
+                                <Border Grid.Column="2" Style="{StaticResource MiniCard}">
+                                    <VerticalStackLayout Spacing="3">
+                                        <Label Text="Check-out"
+                                               TextColor="#666666"
+                                               FontSize="11" />
+                                        <Label Text="{Binding DataCheckOut, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                               TextColor="#C89B6A"
+                                               FontSize="14"
+                                               FontAttributes="Bold" />
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+
+                            <Border Style="{StaticResource MiniCard}">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Grid.Column="0"
+                                           Text="Duração"
+                                           TextColor="#666666"
+                                           FontSize="12"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Estadia}"
+                                           TextColor="#C89B6A"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Grid.Column="0"
+                                   Text="Valor total"
+                                   TextColor="#888888"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Column="1"
+                                   Text="{Binding ValorTotal, StringFormat='{}{0:C}'}"
+                                   TextColor="#C89B6A"
+                                   FontSize="26"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <Button Text="← Voltar"
+                            Clicked="Button_Clicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#C89B6A"
+                            BorderColor="#C89B6A"
+                            BorderWidth="1.5"
+                            CornerRadius="10"
+                            HeightRequest="50"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            CharacterSpacing="1"
+                            TextTransform="Uppercase"
+                            Margin="0,4,0,0" />
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

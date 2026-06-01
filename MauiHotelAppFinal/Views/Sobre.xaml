@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHotelAppFinal.Views.Sobre"
+             Title="Sobre"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#1A1A1A">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="LabelRotulo">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="TextColor" Value="#666666" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CharacterSpacing" Value="1.2" />
+                <Setter Property="TextTransform" Value="Uppercase" />
+                <Setter Property="Margin" Value="0,0,0,10" />
+            </Style>
+
+            <Style TargetType="Border" x:Key="CardSecao">
+                <Setter Property="BackgroundColor" Value="#2F2F2F" />
+                <Setter Property="Stroke" Value="Transparent" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+                <Setter Property="Padding" Value="14" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Border BackgroundColor="#2A2A2A"
+                    Stroke="#3A3A3A"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="14,6"
+                    HorizontalOptions="Center"
+                    Margin="0,12,0,0">
+                <HorizontalStackLayout Spacing="6">
+                    <Label Text="ℹ"
+                           TextColor="#C89B6A"
+                           FontSize="13"
+                           VerticalOptions="Center" />
+                    <Label Text="Sobre o app"
+                           TextColor="#888888"
+                           FontSize="11"
+                           CharacterSpacing="1"
+                           TextTransform="Uppercase"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                <Border BackgroundColor="#2A2A2A"
+                        Stroke="#C89B6A"
+                        StrokeThickness="1.5"
+                        StrokeShape="RoundRectangle 16"
+                        WidthRequest="72"
+                        HeightRequest="72"
+                        HorizontalOptions="Center">
+                    <Label Text="🏨"
+                           FontSize="34"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+
+                <Label Text="Hotel Reservas"
+                       TextColor="#C89B6A"
+                       FontFamily="Kalam"
+                       FontSize="28"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Text="Versão 1.0.0"
+                       TextColor="#555555"
+                       FontSize="12"
+                       CharacterSpacing="0.5"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <Border BackgroundColor="#262626"
+                    Stroke="#333333"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="16">
+                <VerticalStackLayout Spacing="12">
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Descrição" Style="{StaticResource LabelRotulo}" />
+                            <Label Text="Aplicativo de gestão e contratação de hospedagem, permitindo reservas de suítes com cálculo automático de diárias e controle de hóspedes."
+                                   TextColor="#AAAAAA"
+                                   FontSize="13"
+                                   LineHeight="1.6" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Style="{StaticResource CardSecao}">
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Informações" Style="{StaticResource LabelRotulo}" />
+
+                            <Grid ColumnDefinitions="*, Auto" Margin="0,0,0,8">
+                                <Label Grid.Column="0" Text="Desenvolvido por"
+                                       TextColor="#666666" FontSize="13"
+                                       VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="Lucas Camargo"
+                                       TextColor="#C89B6A" FontSize="13"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                            <BoxView HeightRequest="0.5" Color="#3A3A3A" Margin="0,0,0,8" />
+
+                            <Grid ColumnDefinitions="*, Auto" Margin="0,0,0,8">
+                                <Label Grid.Column="0" Text="Tecnologia"
+                                       TextColor="#666666" FontSize="13"
+                                       VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text=".NET MAUI"
+                                       TextColor="#C89B6A" FontSize="13"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                            <BoxView HeightRequest="0.5" Color="#3A3A3A" Margin="0,0,0,8" />
+
+                            <Grid ColumnDefinitions="*, Auto" Margin="0,0,0,8">
+                                <Label Grid.Column="0" Text="Etec"
+                                       TextColor="#666666" FontSize="13"
+                                       VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="DS II - Agenda 14"
+                                       TextColor="#C89B6A" FontSize="13"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                            <BoxView HeightRequest="0.5" Color="#3A3A3A" Margin="0,0,0,8" />
+
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Grid.Column="0" Text="Versão"
+                                       TextColor="#666666" FontSize="13"
+                                       VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="1.0.0"
+                                       TextColor="#C89B6A" FontSize="13"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center" />
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Button Text="← Voltar"
+                            Clicked="BtnVoltar_Clicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#C89B6A"
+                            BorderColor="#C89B6A"
+                            BorderWidth="1.5"
+                            CornerRadius="10"
+                            HeightRequest="50"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            CharacterSpacing="1"
+                            TextTransform="Uppercase"
+                            Margin="0,4,0,0" />
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
